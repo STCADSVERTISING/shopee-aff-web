@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: shopee-aff-web
+    env: docker
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: AFF_ENABLED
+        value: "false"
+      - key: AFF_ENDPOINT
+        sync: false
+      - key: AFF_APP_ID
+        sync: false
+      - key: AFF_SECRET
+        sync: false
