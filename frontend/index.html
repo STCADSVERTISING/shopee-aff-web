@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shopee Aff Web – คัดสินค้าขายดี & ค่าคอมสูง</title>
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+  <header class="container">
+    <h1>🧲 Shopee Aff Web</h1>
+    <p class="muted">คัด “ขายดีที่สุด” และ (ถ้ามี) “ค่าคอมสูงสุด” พร้อมลิงก์สินค้า</p>
+  </header>
+
+  <main class="container grid">
+    <section class="card">
+      <h2>ค้นหาแบบกำหนดเอง</h2>
+      <div class="row">
+        <label>คีย์เวิร์ด</label>
+        <input id="kw" placeholder="เช่น รองเท้าผู้ชาย, หูฟัง, ครีมกันแดด" />
+      </div>
+      <div class="row">
+        <label>จำนวนดึง</label>
+        <input id="limit" type="number" value="120" />
+        <label>เรตติ้ง ≥</label>
+        <input id="min_rating" type="number" step="0.1" value="4.5" />
+        <label>ยอดขายสะสม ≥</label>
+        <input id="min_sold" type="number" value="100" />
+      </div>
+      <div class="row">
+        <label>จัดเรียง</label>
+        <select id="sort">
+          <option value="sold">ขายดี</option>
+          <option value="score">คะแนน (คอมฯ×ยอดขาย)</option>
+        </select>
+        <button id="btnSearch">ค้นหา</button>
+      </div>
+      <div id="searchStatus" class="muted"></div>
+      <div id="searchTable"></div>
+    </section>
+
+    <section class="card">
+      <h2>Top by Category (อัตโนมัติ)</h2>
+      <div class="row">
+        <label>จำนวนต่อหมวด</label>
+        <input id="perCat" type="number" value="20" />
+        <label>เรตติ้ง ≥</label>
+        <input id="cat_min_rating" type="number" step="0.1" value="4.5" />
+        <label>ยอดขายสะสม ≥</label>
+        <input id="cat_min_sold" type="number" value="100" />
+      </div>
+      <div class="row">
+        <label>ใช้อันดับคะแนน</label>
+        <input id="use_score" type="checkbox" checked />
+        <button id="btnPerCat">ดึง Top ต่อหมวด</button>
+      </div>
+      <div id="catStatus" class="muted"></div>
+      <div id="catResults"></div>
+    </section>
+
+    <section class="card">
+      <h2>ตั้งค่า Commission</h2>
+      <details open>
+        <summary>วิธีใช้งาน</summary>
+        <ol>
+          <li>ถ้ายังไม่มี API: อัปโหลด <code>CSV</code> ที่มีคอลัมน์ <code>itemid,commission_rate</code> เพื่อเติมคอมมิชชั่นด้วยตัวเอง</li>
+          <li>ถ้ามี API แล้ว: ใส่ค่า <code>endpoint</code>, <code>app_id</code>, <code>secret</code> แล้วกด Save</li>
+        </ol>
+      </details>
+      <div class="row">
+        <input type="file" id="csvFile" accept=".csv" />
+        <button id="btnUpload">อัปโหลด CSV</button>
+        <span id="csvStatus" class="muted"></span>
+      </div>
+      <div class="row">
+        <input id="endpoint" placeholder="https://open-api.affiliate.shopee.co.th/graphql" />
+        <input id="app_id" placeholder="APP_ID" />
+        <input id="secret" placeholder="SECRET" />
+        <label><input type="checkbox" id="enabled" /> เปิดใช้ API</label>
+        <button id="btnSaveCfg">Save</button>
+      </div>
+      <div id="cfgStatus" class="muted"></div>
+    </section>
+  </main>
+
+  <footer class="container muted">
+    <p>เคารพเงื่อนไขของ Shopee เสมอ – ใช้งานแบบมีมารยาท (หน่วงเวลาการดึง, ไม่ยิงถี่)</p>
+  </footer>
+
+  <script src="/assets/script.js"></script>
+</body>
+</html>

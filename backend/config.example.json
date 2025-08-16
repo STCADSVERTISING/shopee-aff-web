@@ -1,0 +1,8 @@
+{
+  "affiliate": {
+    "enabled": false,
+    "endpoint": "https://open-api.affiliate.shopee.co.th/graphql",
+    "app_id": "YOUR_APP_ID",
+    "secret": "YOUR_SECRET"
+  }
+}
